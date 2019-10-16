@@ -1,6 +1,5 @@
 @import "fonts";
 @import "variables";
-@import "response";
 
 * {
   margin: 0;
@@ -26,6 +25,7 @@ ul {
 
 img {
   width: 100%;
+  height: 100%;
   max-width: 100%;
   object-fit: cover;
   object-position: center center;
@@ -307,7 +307,7 @@ section {
             margin: 0 30px;
 
             .number {
-              color: rgba(0,0,0,0.3);
+              color: rgba(0, 0, 0, 0.3);
               font-family: $nunito;
               font-size: 12px;
               line-height: 26px;
@@ -474,3 +474,5 @@ section {
   }
 
 }
+
+@import "response";
