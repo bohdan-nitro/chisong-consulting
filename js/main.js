@@ -1,5 +1,52 @@
 $(document).ready(function () {
 
+    //  Header functions
+    var headerSelector = '.header';
+    var headerNavigationSelector = '.header .header-navigation';
+    var headerBurgerBtnSelector = '.header .header-burger-btn';
+
+    function headerScroll() {
+
+        var scrollTop = $(document).scrollTop();
+
+        if (scrollTop > 100) {
+            $(headerSelector).addClass('fixed');
+        } else {
+            $(headerSelector).removeClass('fixed');
+        }
+
+    }
+
+    headerScroll();
+
+    //  Burger btn click
+    $(headerBurgerBtnSelector).on('click', function () {
+
+        $(headerNavigationSelector).toggleClass('active');
+
+    });
+
+
+    //  Animation functions
+    var sectionAnimationSelector = 'section.animate';
+
+    $(sectionAnimationSelector).on('inview', function(event, isInView) {
+        if (isInView) {
+            $(this).addClass('go');
+        } else {
+            $(this).removeClass('go');
+        }
+    });
+
+
+    //  Document scroll event
+    $(document).on('scroll', function () {
+
+        headerScroll();
+
+    });
+
+
     //  Page sliders
     var mainPageSectionSliderSelector = '.slider.main-page .section-slider-container';
 
@@ -34,5 +81,8 @@ $(document).ready(function () {
             }
         }
     });
+
+
+
 
 });

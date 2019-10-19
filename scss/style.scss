@@ -82,15 +82,13 @@ p {
 }
 
 .header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
   background-color: #fff;
   z-index: 10;
-
-  &.fixed {
-    position: fixed;
-    left: 0;
-    top: 0;
-  }
 
   .header-container {
     width: inherit;
@@ -108,6 +106,10 @@ p {
 
     }
 
+    .header-burger-btn {
+      display: none;
+    }
+
     .header-navigation {
       width: 100%;
 
@@ -117,6 +119,7 @@ p {
         flex-flow: row nowrap;
         justify-content: center;
         align-items: center;
+        transition: all 0.4s ease;
 
         .navigation-item {
 
@@ -147,6 +150,32 @@ p {
 
   }
 
+  &.fixed {
+    position: fixed;
+    left: 0;
+    top: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+
+    .header-logo {
+      display: none;
+    }
+
+    .header-navigation {
+      .navigation-container {
+        height: 75px;
+
+        .navigation-item {
+          .nav-link {
+            padding: 10px 20px;
+          }
+        }
+
+      }
+    }
+
+  }
+
 }
 
 .footer {
@@ -164,6 +193,12 @@ p {
 
 }
 
+.content {
+  padding-top: 150px;
+  max-width: 100%;
+  overflow: hidden;
+}
+
 section {
 
   .button {
@@ -172,6 +207,7 @@ section {
     height: 50px;
     border: $btnBorder;
     cursor: pointer;
+    transition: all 0.4s ease;
 
     a {
       display: block;
@@ -185,6 +221,15 @@ section {
       text-align: center;
       text-transform: uppercase;
       padding: 0 36px;
+    }
+
+    &:hover {
+      background-color: $btnTextColor;
+
+      a {
+        color: #fff;
+      }
+
     }
 
   }
@@ -343,13 +388,17 @@ section {
       width: inherit;
       display: flex;
       flex-flow: row nowrap;
+      align-items: center;
     }
 
     .col {
       width: 50%;
 
       &.img {
+        height: 675px;
+
         .img-container {
+          height: 100%;
           position: relative;
         }
 
@@ -362,6 +411,7 @@ section {
           border: 1px solid $imgBorderColor;
           z-index: -1;
         }
+
       }
 
       &.text {
@@ -381,9 +431,17 @@ section {
           padding: 0 30px 30px 0;
 
           .img-container {
+
+            img {
+              transform: translateX(-10%);
+              opacity: 0;
+              transition: transform 0.3s linear, opacity 0.6s ease;
+            }
+
             .rect {
               left: 30px;
             }
+
           }
 
         }
@@ -398,6 +456,13 @@ section {
           padding: 0 0 30px 30px;
 
           .img-container {
+
+            img {
+              transform: translateX(10%);
+              opacity: 0;
+              transition: transform 0.3s linear, opacity 0.6s ease;
+            }
+
             .rect {
               left: -30px;
             }
@@ -412,7 +477,6 @@ section {
 
       &.second {
         .text-container {
-          padding-top: 162px;
 
           .text {
             margin-bottom: 15px;
@@ -427,7 +491,6 @@ section {
 
       &.four {
         .text-container {
-          padding-top: 204px;
 
           .text {
             margin-bottom: 40px;
@@ -438,7 +501,6 @@ section {
 
       &.five {
         .text-container {
-          padding-top: 197px;
 
           .subtitle {
             margin-bottom: 15px;
@@ -455,7 +517,6 @@ section {
         margin-bottom: 100px;
 
         .text-container {
-          padding-top: 215px;
 
           .text {
             margin-bottom: 20px;
@@ -463,6 +524,38 @@ section {
 
           .subtitle {
             margin-bottom: 40px;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+  &.animate {
+    opacity: 0;
+    transition: opacity 0.8s ease;
+
+    &.go {
+      opacity: 1;
+
+      &.img-text, &.text-img {
+
+        .col {
+
+          &.img {
+
+            .img-container {
+
+              img {
+                opacity: 1;
+                transform: translateX(0);
+              }
+
+            }
+
           }
 
         }
